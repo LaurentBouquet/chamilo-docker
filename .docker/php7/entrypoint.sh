@@ -8,7 +8,6 @@ if [ ! -d "vendor" ]; then
     rm -rf /tmp/chamilo
     COMPOSER_MEMORY_LIMIT=-1 composer global require hirak/prestissimo
     COMPOSER_MEMORY_LIMIT=-1 composer install
-    php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
 fi
 chown -R www-data:www-data app main/default_course_document web
 php-fpm
