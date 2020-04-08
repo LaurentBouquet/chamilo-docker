@@ -7,7 +7,7 @@ if [ ! -d "vendor" ]; then
     mv /tmp/chamilo/* /chamilo
     rm -rf /tmp/chamilo
     COMPOSER_MEMORY_LIMIT=-1 composer global require hirak/prestissimo
-    COMPOSER_MEMORY_LIMIT=-1 composer install
+    COMPOSER_MEMORY_LIMIT=-1 composer install --prefer-dist
 fi
 chown -R www-data:www-data app main/default_course_document web
 php-fpm
