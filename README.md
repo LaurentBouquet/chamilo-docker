@@ -7,6 +7,9 @@ Stack:
 
 ## Install
 
+
+First, clone this repository.
+
 ```bash
 cp .env.exaple .env
 ```
