@@ -10,8 +10,10 @@ Stack:
 
 First, clone this repository.
 
+In the root folder of project, run this:
+
 ```bash
-cp .env.exaple .env
+cp .env.example .env
 ```
 
 Edit the .env file to put your prefered database credentials.
