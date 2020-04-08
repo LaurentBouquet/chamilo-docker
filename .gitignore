@@ -1,0 +1,5 @@
+.docker/volumes/
+/chamilo
+.env
+
+.vscode

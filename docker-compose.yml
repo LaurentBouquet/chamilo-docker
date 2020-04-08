@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  php7:
+    build: .docker/php7
+    restart: always
+    links:
+      - db:mysql
+    volumes:
+      - ./chamilo:/chamilo
+      - ~/.composer:/root/.composer
+    env_file:
+      - .env
+    environment:
+      XDEBUG_CONFIG: "remote_host=172.17.0.1 remote_enable=1"
+  db:
+    restart: always
+    image: mariadb
+    env_file:
+      - .env
+    ports:
+      - 8306:3306
+    volumes:
+      - ./.docker/volumes/mysql/data:/var/lib/mysql/
+  nginx:
+    image: nginx:latest
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 80:80
+    links:
+      - php7
+    volumes:
+      - ./chamilo:/chamilo/
+      - ./.docker/nginx/conf:/etc/nginx/conf.d
