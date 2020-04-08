@@ -14,9 +14,6 @@ RUN pecl install xdebug-2.9.4 \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer --version
 
-COPY wait-for-mysql.php /usr/local/bin/wait-for-mysql
-RUN chmod +x /usr/local/bin/wait-for-mysql
-
 COPY config/php.ini /usr/local/etc/php/conf.d/
 WORKDIR /chamilo
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
