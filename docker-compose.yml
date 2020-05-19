@@ -2,6 +2,7 @@ version: '2'
 
 services:
   php7:
+    container_name: chamilo-php
     build: .docker/php7
     restart: always
     links:
@@ -14,21 +15,23 @@ services:
     environment:
       XDEBUG_CONFIG: "remote_host=172.17.0.1 remote_enable=1"
   db:
+    container_name: chamilo-db
     restart: always
     image: mariadb
     env_file:
       - .env
     ports:
-      - 8306:3306
+      - 3307:3306
     volumes:
       - ./.docker/volumes/mysql/data:/var/lib/mysql/
   nginx:
+    container_name: chamilo-web
     image: nginx:latest
     restart: always
     env_file:
       - .env
     ports:
-      - 80:80
+      - 8030:80
     links:
       - php7
     volumes:
